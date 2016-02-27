@@ -17,8 +17,10 @@ public class AggregateActor extends UntypedActor {
     @Override
     public void onReceive(Object message) throws Exception {
         if(message instanceof ReduceData){
+            System.out.println("aggregateReceive");
             ReduceData reduceData = (ReduceData) message;
             aggregateInMemoryReduce(reduceData.getReduceDataList());
+            System.out.println(finalReducedMap.toString());
         }else if(message instanceof Result){
             System.out.println(finalReducedMap.toString());
 

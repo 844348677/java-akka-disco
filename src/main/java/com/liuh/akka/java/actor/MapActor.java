@@ -36,12 +36,13 @@ public class MapActor extends UntypedActor {
     @Override
     public void onReceive(Object message) throws Exception {
         if(message instanceof String){
+            System.out.println("mapReceive");
             String work = (String) message;
 
             MapData data = evaluateExpression(work);  //用下面的方法来解决一行语句
 
             reduceActor.tell(data);
-            //System.out.println(data.toString());
+            //System.out.println(data.getDataList().toString());
         }else
             unhandled(message);
     }

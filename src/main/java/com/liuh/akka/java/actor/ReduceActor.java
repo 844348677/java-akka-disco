@@ -23,11 +23,13 @@ public class ReduceActor  extends UntypedActor{
     @Override
     public void onReceive(Object message) throws Exception{
         if(message instanceof MapData){
+            System.out.println("reduceReceive");
             MapData mapData = (MapData) message;
 
             ReduceData reduceData = reduce(mapData.getDataList()); //获取里面的数据进行reduce操作
 
             aggregateActor.tell(reduceData);
+            System.out.println(reduceData.getReduceDataList());
         }else
             unhandled(message);
     }

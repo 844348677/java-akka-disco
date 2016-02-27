@@ -14,7 +14,7 @@ public class MasterActor extends UntypedActor {
     private ActorRef reduceActor = getContext().actorOf(
             new Props(new UntypedActorFactory(){
                 public UntypedActor create(){
-                    return new MapActor(aggregateActor);
+                    return new ReduceActor(aggregateActor);
                 }
             }),"reduce");
 
@@ -32,7 +32,7 @@ public class MasterActor extends UntypedActor {
     public void onReceive(Object message) throws Exception {
         if(message instanceof  String){
             mapActor.tell(message);
-            System.out.println("发送的string类型数据");
+            //System.out.println("发送的string类型数据");
         }else if(message instanceof Result){
             aggregateActor.tell(message);
         }else {
