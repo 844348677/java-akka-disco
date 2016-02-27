@@ -14,6 +14,11 @@ public class ReduceData {
     }
 
     public void setReduceDataList(HashMap<String, Integer> reduceDataList) {
+
+        this.reduceDataList = reduceDataList;
+    }
+
+    public ReduceData(HashMap<String, Integer> reduceDataList) {
         this.reduceDataList = reduceDataList;
     }
 }
