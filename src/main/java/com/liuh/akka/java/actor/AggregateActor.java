@@ -3,6 +3,7 @@ package com.liuh.akka.java.actor;
 import akka.actor.ActorRef;
 import akka.actor.UntypedActor;
 import com.liuh.akka.java.messages.ReduceData;
+import com.liuh.akka.java.messages.Result;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,8 +18,12 @@ public class AggregateActor extends UntypedActor {
     public void onReceive(Object message) throws Exception {
         if(message instanceof ReduceData){
             ReduceData reduceData = (ReduceData) message;
+            aggregateInMemoryReduce(reduceData.getReduceDataList());
+        }else if(message instanceof Result){
+            System.out.println(finalReducedMap.toString());
 
-        }
+        }else
+            unhandled(message);
     }
 
     private void aggregateInMemoryReduce(Map<String,Integer> reducedList){

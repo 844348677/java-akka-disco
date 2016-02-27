@@ -41,7 +41,7 @@ public class MapActor extends UntypedActor {
             MapData data = evaluateExpression(work);  //用下面的方法来解决一行语句
 
             reduceActor.tell(data);
-
+            //System.out.println(data.toString());
         }else
             unhandled(message);
     }
