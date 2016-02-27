@@ -13,7 +13,11 @@ public class MapData {
         return dataList;
     }
 
-    public void setDataList(List<WordCount> dataList) {
+/*    public void setDataList(List<WordCount> dataList) {
+        this.dataList = dataList;
+    }*/
+
+    public MapData(List<WordCount> dataList) {
         this.dataList = dataList;
     }
 }

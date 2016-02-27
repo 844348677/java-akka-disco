@@ -8,7 +8,13 @@ public class WordCount {
     private String word;  //单词本身
     private Integer count; //单词计数
 
+    public WordCount(String word, Integer count) {
+        this.word = word;
+        this.count = count;
+    }
+
     public String getWord() {
+
         return word;
     }
 
